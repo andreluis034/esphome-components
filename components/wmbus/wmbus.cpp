@@ -70,7 +70,7 @@ namespace wmbus {
       telegram.erase(std::remove(telegram.begin(), telegram.end(), '.'), telegram.end());
 
       // ToDo: add manufactures check
-      uint32_t meter_id = ((uint32_t)frame[7] << 24) | ((uint32_t)frame[6] << 16) |
+      unsigned long long meter_id = ((uint32_t)frame[7] << 24) | ((uint32_t)frame[6] << 16) |
                           ((uint32_t)frame[5] << 8)  | ((uint32_t)frame[4]);
 
       if (this->wmbus_listeners_.count(meter_id) > 0) {
@@ -428,14 +428,14 @@ namespace wmbus {
     }
   }
 
-  WMBusListener::WMBusListener(const uint32_t id, const std::string type, const std::string key, const FrameMode framemode) {
+  WMBusListener::WMBusListener(const unsigned long long id, const std::string type, const std::string key, const FrameMode framemode) {
     this->id = id;
     this->type = type;
     this->framemode = framemode;
     hex_to_bin(key, &(this->key));
   }
 
-  WMBusListener::WMBusListener(const uint32_t id, const std::string type, const std::string key) {
+  WMBusListener::WMBusListener(const unsigned long long id, const std::string type, const std::string key) {
     this->id = id;
     this->type = type;
     hex_to_bin(key, &(this->key));

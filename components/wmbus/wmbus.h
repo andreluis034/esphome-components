@@ -53,7 +53,7 @@ namespace wmbus {
     public:
       WMBusListener(const uint32_t id, const std::string type, const std::string key, const FrameMode framemode);
       WMBusListener(const uint32_t id, const std::string type, const std::string key);
-      uint32_t id;
+      unsigned long long id;
       std::string type;
       FrameMode framemode{};
       std::vector<unsigned char> key{};
